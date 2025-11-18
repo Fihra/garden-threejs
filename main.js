@@ -17,23 +17,28 @@ document.body.appendChild(renderer.domElement);
 
 const planeGeometry = new THREE.PlaneGeometry(10, 10);
 const planeMaterial = new THREE.MeshBasicMaterial({
-  color: 0xcccccc
+  color: 0x124f21
 });
 const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+
+plane.rotation.x = -Math.PI /2;
+
 scene.add(plane);
 
-for(let i = 0; i < 10; i++) {
-  const randomX = Math.random(0, 85);
-  const randomY = Math.random(0, 55);
+console.log("plane: ", planeGeometry.parameters.width);
+
+for(let i = 0; i < 100; i++) {
+  const randomX = Math.random(0, plane.position.x) * 100;
+  const randomY = Math.random(0, plane.position.y) * 10;
+  // console.log("X: ", randomX);
+  // console.log("Y: ", randomY);
   
-  const geometry = new THREE.BoxGeometry(0.5, 0.5, 8);
-  geometry.translate(1, 2, 10);
+  const geometry = new THREE.BoxGeometry(0.5, 0.5, 2);
+  geometry.translate(randomX, randomY, 1);
 
   const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
   const cube = new THREE.Mesh(geometry, material);
   bamboos.push(cube);
-  // scene.add(cube);
-
 }
 
 for(let tree of bamboos){
@@ -42,7 +47,7 @@ for(let tree of bamboos){
 
 camera.position.z = 10;
 camera.position.y = 10;
-camera.up.set(0, 0, 1);
+// camera.up.set(0, 0, 1);
 camera.lookAt(0, 0, 0);
 
 function animate() {
