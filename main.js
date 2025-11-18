@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 const bamboos = [];
 
@@ -50,11 +51,21 @@ camera.position.y = 10;
 // camera.up.set(0, 0, 1);
 camera.lookAt(0, 0, 0);
 
+const controls = new OrbitControls(camera, renderer.domElement);
+
+let time = 0;
+
 function animate() {
 
+  controls.update();
+
+  time += 0.01;
   for(let tree of bamboos){
     const randomNum = Math.random(0.001, 0.005);
     tree.rotation.x += randomNum;
+    // console.log(tree);
+    tree.scale.x = 5 * Math.sin(time);
+    tree.scale.y = 5 * Math.sin(time);
   scene.add(tree);
   }
   renderer.render(scene, camera);
