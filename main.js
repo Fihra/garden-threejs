@@ -15,21 +15,21 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setAnimationLoop(animate);
 document.body.appendChild(renderer.domElement);
 
-const planeGeometry = new THREE.PlaneGeometry(10, 10);
-const planeMaterial = new THREE.MeshBasicMaterial({
-  color: 0x124f21
-});
-const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+// const planeGeometry = new THREE.PlaneGeometry(10, 10);
+// const planeMaterial = new THREE.MeshBasicMaterial({
+//   color: 0x124f21
+// });
+// const plane = new THREE.Mesh(planeGeometry, planeMaterial);
 
-plane.rotation.x = -Math.PI /2;
+// plane.rotation.x = -Math.PI /2;
 
-scene.add(plane);
+// scene.add(plane);
 
-console.log("plane: ", planeGeometry.parameters.width);
+// console.log("plane: ", planeGeometry.parameters.width);
 
 for(let i = 0; i < 100; i++) {
-  const randomX = Math.random(0, plane.position.x) * 100;
-  const randomY = Math.random(0, plane.position.y) * 10;
+  const randomX = Math.random(0, window.innerWidth) * 100;
+  const randomY = Math.random(0, window.innerHeight) * 10;
   // console.log("X: ", randomX);
   // console.log("Y: ", randomY);
   
@@ -51,5 +51,16 @@ camera.position.y = 10;
 camera.lookAt(0, 0, 0);
 
 function animate() {
+
+  for(let tree of bamboos){
+    tree.rotation.x += 0.01;
+  scene.add(tree);
+  }
   renderer.render(scene, camera);
 }
+
+
+// function animate() {
+//   cube.rotation.x += 0.01;
+//   renderer.render(scene, camera);
+// }
