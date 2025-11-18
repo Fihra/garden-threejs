@@ -53,7 +53,8 @@ camera.lookAt(0, 0, 0);
 function animate() {
 
   for(let tree of bamboos){
-    tree.rotation.x += 0.01;
+    const randomNum = Math.random(0.001, 0.005);
+    tree.rotation.x += randomNum;
   scene.add(tree);
   }
   renderer.render(scene, camera);
