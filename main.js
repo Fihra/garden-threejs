@@ -139,8 +139,8 @@ scene.add(spotLight.target);
 //  scene.add(light.target);
 
 
- const axesHelper = new THREE.AxesHelper( 5 );
-scene.add( axesHelper );
+//  const axesHelper = new THREE.AxesHelper( 5 );
+// scene.add( axesHelper );
 // light.target();
 // const sphereSize = 1;
 // const pointLightHelper = new THREE.PointLightHelper( pointLight, sphereSize );
