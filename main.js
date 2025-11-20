@@ -38,7 +38,7 @@ const clock = new THREE.Clock();
 
 const loader = new GLTFLoader();
 
-loader.load('/assets/animated_dog_shiba_inu.glb', function(gltf) {
+loader.load('/animated_dog_shiba_inu.glb', function(gltf) {
   const original = gltf.scene;
 
   for(let i = 0; i < 5; i++){
@@ -76,7 +76,7 @@ function randomizer(){
   return Math.random(0, 10) * 25;
 }
 
-loader.load('/assets/maxwell_the_cat_with_bones_animation.glb', function(gltf) {
+loader.load('/maxwell_the_cat_with_bones_animation.glb', function(gltf) {
   const original = gltf.scene;
   for(let i = 0; i < 50; i++){
     const clone =  SkeletonUtils.clone(original);
