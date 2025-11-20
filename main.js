@@ -25,9 +25,9 @@ renderer.setAnimationLoop(animate);
 document.body.appendChild(renderer.domElement);
 
 
-// const gui = new GUI({ title: "Controls", width: 300});
-// const cubeOneFolder = gui.addFolder("Cube one");
-// cubeOneFolder.add(cats.position, "x").min(-5).max(5).step(0.5).name("pos x");
+const gui = new GUI({ title: "Controls", width: 300});
+
+
 // cubeOneFolder.addColor(cube.material, "color");
 
 
@@ -59,6 +59,15 @@ loader.load('assets/animated_dog_shiba_inu.glb', function(gltf) {
       dogMixers[dogMixers.length-1].clipAction(gltf.animations[0]).play();
     }
   }
+
+    const controls = {
+    allDogsPositionX: 0
+  }
+
+  const dogsFolder = gui.addFolder("Dogs");
+  dogsFolder.add(controls, "allDogsPositionX").min(-50).max(50).step(0.1).name("position X").onChange(( value) => {
+    dogs.forEach(dog => { dog.position.x = value});
+  })
 
 })
 
@@ -93,7 +102,21 @@ loader.load('assets/maxwell_the_cat_with_bones_animation.glb', function(gltf) {
       // })
     }
 
+    
+
   }
+
+  const controls = {
+    allCatsPositionX: 0
+  }
+
+  const catsFolder = gui.addFolder("Cats");
+  catsFolder.add(controls, "allCatsPositionX").min(-50).max(50).step(0.1).name("position X").onChange(( value) => {
+    cats.forEach(cat => { cat.position.x = value});
+  })
+
+  // catsFolder.add(cat.position, "x").min(-5).max(5).step(0.5).name("pos x");
+
 
 }, undefined, function(error) {
   console.error('GLTF load error:', error);
